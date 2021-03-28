@@ -31,28 +31,28 @@ function runQuiz() {
     var questionList = [
         {
             question: "What two colors mixed together create purple?",
-            choices: ["", "choice1.2", "choice1.3", "choice1.4"],
-            answer: "answer1"
+            choices: ["turquoise + burnt orange", "red + blue", "light purple + dark purple", "all of the above"],
+            answer: "red + blue"
         },
         {
-            question: "question2",
-            choices: ["choice2.1", "choice2.2", "choice2.3", "choice2.4"],
-            answer: "answer2"
+            question: "Halloween occurs in which season?",
+            choices: ["Spring", "Summer", "Fall", "Winter"],
+            answer: "Fall"
         },
         {
-            question: "question3",
-            choices: ["choice3.1", "choice3.2", "choice3.3", "choice3.4"],
-            answer: "answer3"
+            question: "3 iguanas walk into a spa. One iguana decides to leave. How many iguanas are left?",
+            choices: ["2", "3", "1", "4"],
+            answer: "2"
         },
         {
-            question: "question4",
-            choices: ["choice4.1", "choice4.2", "choice4.3", "choice4.4"],
-            answer: "answer4"
+            question: "Which of the below is NOT a gaming console?",
+            choices: ["Xbox", "PlayStation", "Nintendo Switch", "Dishwasher"],
+            answer: "Dishwasher"
         },
         {
-            question: "question5",
-            choices: ["choice5.1", "choice5.2", "choice5.3", "choice5.4"],
-            answer: "answer5"
+            question: "Does pineapple go on pizza?",
+            choices: ["100%", "This answer is wrong", "This answer is false", "This answer is incorrect"],
+            answer: "100%"
         }
     ];
 
