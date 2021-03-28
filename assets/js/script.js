@@ -32,6 +32,7 @@ function runQuiz() {
             answer: "answer5"
         }
     ];
+
 }
 
 // Add event listener to start button
