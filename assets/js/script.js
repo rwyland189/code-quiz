@@ -26,8 +26,30 @@ function updateCountdownTimer() {
 
 // Perform quiz
 function runQuiz() {
-    // display first of multiple questions within in array of objects
-    // on startBtn click, this questionList needs to display
+    // remove instructions and start button
+    var removeInstructions = document.getElementById("#instructions");
+    removeInstructions.remove();
+
+    // Create element for question info
+    var questionInfoEl = document.createElement("div");
+    div.className = "question-info";
+
+    // Create h3 element to display question
+    var questionEl = document.createElement("h3");
+    // Give question element a class
+    questionEl.className = "question";
+    // Upload the questionList question content
+    questionEl.innerHTML = questionList.question;
+    // Add question to the questionInfoEl
+    questionInfoEl.appendChild(questionEl);
+
+    // Create buttons to display answer choices (need 4 buttons per question?)
+    var choicesEl = document.createElement("button");
+    choicesEl.className = "choices";
+    choicesEl.innerHTML = questionList.choices;
+    questionInfoEl.appendChild(choicesEl);
+
+    // Store questions in an array of objects, on startBtn click, this questionList needs to display
     var questionList = [
         {
             question: "What two colors mixed together create purple?",
@@ -55,6 +77,8 @@ function runQuiz() {
             answer: "100%"
         }
     ];
+
+
 
 }
 
