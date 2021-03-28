@@ -36,8 +36,18 @@ var countdownEl = document.getElementById("countdown-timer");
 // Get reference to the container the questions will be displayed in
 var gameContainer = document.getElementById("gameContainer")
 
-// 
 var questionIndex = 0;
+
+//help
+// var choicesIndex = ;
+
+var answerIndex = 0;
+
+// Global variable delcared to simplify data
+var q = questionList[questionIndex]
+
+// Variable to track high score/how many questions the user answered correctly
+var score = 0;
 
 // Create a 1-minute countdown timer by the second
 var startingMinute = 1;
@@ -73,9 +83,6 @@ function runQuiz() {
     document.getElementById("instructions").classList.add("hide")
     gameContainer.classList.remove("hide")
 
-    // Local variable delcared to simplify data
-    var q = questionList[questionIndex]
-
     // Create h3 element to display question
     var questionEl = document.createElement("h3");
     // Give question element a class
@@ -94,10 +101,37 @@ function runQuiz() {
     }
 }
 
-// Add event listener to start button (can you have multiple functions go when the click event happens?)
+
+// Iterate through questionList after click event occurs
+function loopQuiz() {
+    // check if answer is correct
+    if (questionList[answerIndex]) {
+        alert("Correct!");
+
+        // function to add 10 points to high score
+        score = score + 10;
+    }
+    // check if answer is wrong
+    else if (!CHOICE/ANSWER) {
+        alert("Wrong :(");
+
+        // function to deduct 10 seconds from the clock
+        time = time - 10;
+    }
+
+    // save user input with localStorage
+
+    // display next questionIndex in questionList
+    for (var i = 0; i < q.length; i++) {
+        // do we call runQuiz(); ?
+    }
+}
+
+// Add event listener to start button
 startBtn.addEventListener("click", runQuiz);
 
-// Add event listener when a choice is selected
+// Add event listener to when a choice is clicked
+gameContainer.choicesEl.addEventListener("click", loopQuiz)
 
 
 
