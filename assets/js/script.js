@@ -1,3 +1,4 @@
+// Store questions in an array of objects, on startBtn click, this questionList will display
 var questionList = [
     {
         question: "What two colors mixed together create purple?",
@@ -25,18 +26,22 @@ var questionList = [
         answer: "100%"
     }
 ];
+
 // Get references to the #start button
 var startBtn = document.querySelector("#start");
+
 // Get reference to the timer
 var countdownEl = document.getElementById("countdown-timer");
+
+// Get reference to the container the questions will be displayed in
 var gameContainer = document.getElementById("gameContainer")
 
+// 
+var questionIndex = 0;
 
 // Create a 1-minute countdown timer by the second
 var startingMinute = 1;
 var time = startingMinute * 60;
-
-var questionIndex = 0;
 
 // Create function that will countdown the timer
 function updateCountdownTimer() {
@@ -44,13 +49,21 @@ function updateCountdownTimer() {
     var minutes = Math.floor(time / 60);
     var seconds = time % 60;
 
+    // Add a 0 to the timer when there is less than 10 seconds left
     if (seconds < 10) seconds = "0" + seconds;
 
     // Display value of minutes and seconds
     countdownEl.innerHTML = `${minutes}:${seconds}`;
 
     // Decrease time by decrementing by 1
-    time--;
+    time--;   
+
+    // Stop timer when seconds = 0
+    if (seconds <= 0 && minutes <= 0) {
+        alert("Time's Up!");
+        return;
+    }
+    
 }
 
 // Perform quiz
@@ -58,43 +71,45 @@ function runQuiz() {
     // Call updateCountdownTimer every second
     setInterval(updateCountdownTimer, 1000);
 
-    // remove instructions and start button
+    // remove instructions & start button and display first question
     document.getElementById("instructions").classList.add("hide")
     gameContainer.classList.remove("hide")
 
-    // Create element for question info
+    // Local variable delcared to simplify data
     var q = questionList[questionIndex]
+
     // Create h3 element to display question
     var questionEl = document.createElement("h3");
     // Give question element a class
     questionEl.className = "question";
     // Upload the questionList question content
     questionEl.innerHTML = q.question;
-    // Add question to the questionInfoEl
+    // Add question to the gameContainer
     gameContainer.appendChild(questionEl)
 
-    // Create buttons to display answer choices (need 4 buttons per question?)
-    // Store questions in an array of objects, on startBtn click, this questionList needs to display
+    // Create buttons to display answer choices
     for (var i = 0; i < q.choices.length; i++) {
         var choicesEl = document.createElement("button");
         choicesEl.className = "choices";
         choicesEl.innerHTML = q.choices[i];
         gameContainer.appendChild(choicesEl)
     }
-
 }
 
 // Add event listener to start button (can you have multiple functions go when the click event happens?)
 startBtn.addEventListener("click", runQuiz);
 
+// Add event listener when a choice is selected
+
+
 
 
 //after the start button is clicked on...
-// then the first question of multiple will display on the screen (create a form/div to the DOM)
-// the questions are stored in an array of objects
-// we will need to iterate over this array of objects
-// a countdown timer will begin (add element to the DOM)
-// the instructions will be removed (remove from DOM)
+// then the first question of multiple will display on the screen (create a form/div to the DOM) - done
+// the questions are stored in an array of objects - done
+// we will need to iterate over this array of objects - NOT DONE!
+// a countdown timer will begin (add element to the DOM) - done
+// the instructions will be removed (remove from DOM) - done
 
 // when a choice is selected for the first question
 // then an alert will tell the user whether they are right or wrong
@@ -118,6 +133,3 @@ startBtn.addEventListener("click", runQuiz);
 // Go Back will restart the quiz (mock up?)
 // Clear High Scores will delete all the high scores
 
-var element = "<span class='mySpan' value='" + 5 + "'>Hello</span>"
-element = "<span class=\"mySpan\" value=\"" + 5 + "\">Hello</span>"
-element = `<span class="mySpan" value="${5}">Hello</span>`
