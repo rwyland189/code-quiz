@@ -1,5 +1,28 @@
-// Get references to the #start element
+// Get references to the #start button
 var startBtn = document.querySelector("#start");
+
+// Get reference to the timer
+var countdownEl = document.getElementById("#countdown-timer");
+
+// Create a 1-minute countdown timer by the second
+var startingMinute = 1;
+var time = startingMinute * 60;
+
+// Call updateCountdownTimer every second
+setInterval(updateCountdownTimer, 1000);
+
+// Create function that will countdown the timer
+function updateCountdownTimer() {
+    // Calculate time in minutes and seconds
+    var minutes = Math.floor(time / 60);
+    var seconds = time % 60;
+
+    // Display value of minutes and seconds
+    countdownEl.innerHTML = {minutes}:{seconds};
+
+    // Decrease time by decrementing by 1
+    time--;
+}
 
 // Perform quiz
 function runQuiz() {
@@ -7,8 +30,8 @@ function runQuiz() {
     // on startBtn click, this questionList needs to display
     var questionList = [
         {
-            question: "question1",
-            choices: ["choice1.1", "choice1.2", "choice1.3", "choice1.4"],
+            question: "What two colors mixed together create purple?",
+            choices: ["", "choice1.2", "choice1.3", "choice1.4"],
             answer: "answer1"
         },
         {
@@ -35,8 +58,8 @@ function runQuiz() {
 
 }
 
-// Add event listener to start button
-startBtn.addEventListener("click", runQuiz);
+// Add event listener to start button (can you have multiple functions go when the click event happens?)
+startBtn.addEventListener("click", runQuiz, updateCountdownTimer);
 
 
 

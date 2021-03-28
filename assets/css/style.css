@@ -15,11 +15,17 @@ body {
     font-family: Helvetica, Arial, sans-serif;
 }
 
+#countdown-timer {
+    color: var(--secondary-color);
+    font-size: 45px;
+    margin: 20px auto;
+}
+
 header h1 {
     color: var(--primary-color);
     letter-spacing: 3px;
     font-size: 50px;
-    margin: 75px 0 35px 0;
+    margin: 50px 0 35px 0;
 }
 
 div {
