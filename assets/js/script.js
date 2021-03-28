@@ -55,15 +55,13 @@ function updateCountdownTimer() {
     // Display value of minutes and seconds
     countdownEl.innerHTML = `${minutes}:${seconds}`;
 
-    // Decrease time by decrementing by 1
-    time--;   
-
     // Stop timer when seconds = 0
     if (seconds <= 0 && minutes <= 0) {
-        alert("Time's Up!");
         return;
     }
-    
+
+    // Decrease time by decrementing by 1
+    time--;     
 }
 
 // Perform quiz
