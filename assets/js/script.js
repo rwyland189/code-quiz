@@ -109,6 +109,8 @@ function choiceSelected(event) {
     if (event.target.textContent === questionList[questionIndex].answer) {
         alert("Correct!");
         score = score + 10;
+        // Save to localStorage
+        //saveScore();
     }
     // If incorrect answer is selected alert user and deduct 10 seconds from countdown timer
     else {
@@ -116,22 +118,22 @@ function choiceSelected(event) {
         time = time - 10;
     }
 
-    // remove previous question???
-
+    // Remove previous question content
+    gameContainer.innerHTML = null;
 
     // Display next question in questionList
     showQuestion(questionList[questionIndex++]);
 }
 
-/* Create a function to save the data
-function saveAnswer() {
-    //localStorage.setItem("key", value);
-} */
+// Create a function to save the data
+function saveScore() {
+   localStorage.setItem("score", score);
+}
 
 // Create a function to end the quiz
 function endQuiz() {
     // If all questions have been displayed and answered, next question value is undefined
-    if (questionList[questionIndex].question === undefined) {
+    if (questionList[questionIndex].question === undefined || time === 0) {
         // Hide the quiz
         gameContainer.classList.add("hide");
         // Generate the final score page
@@ -162,35 +164,4 @@ gameContainer.addEventListener("click", choiceSelected);
 
 // End quiz function call
 endQuiz();
-
-
-
-        //after the start button is clicked on...
-        // then the first question of multiple will display on the screen (create a form/div to the DOM) - done
-        // the questions are stored in an array of objects - done
-        // we will need to iterate over this array of objects - done
-        // a countdown timer will begin (add element to the DOM) - done
-        // the instructions will be removed (remove from DOM) - done
-
-// when a choice is selected for the first question...
-        // then an alert will tell the user whether they are right or wrong - done
-        // if they are wrong, time will be deducted from the clock - done
-// localStorage will save their answer/input - NOT DONE!
-// then the question will disappear (remove from DOM) - NOT DONE!
-        // and the next question in the array of objects will appear - done
-
-        // when the second question displays on the DOM, then the code for the first question will be repeated, and so on with every question - done
-
-// the quiz is over when either all questions have been answered or the time runs out - NOT DONE!
-// if time runs out, then an alert will say "time's up!" - NOT DONE!
-
-// when the quiz is over...
-// create an input text area on the DOM so the user can enter their initials
-// create a submit button that the user can click to save their initials
-// on the click of that button localStorage will save the input value to the high scores
-
-// when the high score page appears...
-// two buttons, Go Back and Clear High Scores, will be available
-// Go Back will restart the quiz (mock up?)
-// Clear High Scores will delete all the high scores
 
