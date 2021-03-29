@@ -118,16 +118,28 @@ function choiceSelected(event) {
 
     // remove previous question???
 
+
     // Display next question in questionList
     showQuestion(questionList[questionIndex++]);
 }
 
-// Create a function to save the data
+/* Create a function to save the data
 function saveAnswer() {
-    localStorage.setItem("key", value);
+    //localStorage.setItem("key", value);
+} */
+
+// Create a function to end the quiz
+function endQuiz() {
+    // If all questions have been displayed and answered, next question value is undefined
+    if (questionList[questionIndex].question === undefined) {
+        // Hide the quiz
+        gameContainer.classList.add("hide");
+        // Generate the final score page
+        document.getElementById("finalScorePage").classList.remove("hide");
+    }
 }
 
-// Create a function to get items from local storage and convert to high score
+/* Create a function to get items from local storage and convert to high score
 function loadHighScore() {
     // localStorage.getItem("");
 
@@ -135,16 +147,12 @@ function loadHighScore() {
 
     // multiply that value by 10 to get total high score
     score = value * 10;
-}
+} */
 
-// Display final score page
+/* Display final score page
 function finalScore() {
-    // Hide gameContainer and reveal highScorePage when all questions have been run through
-    if (questionList[questionIndex].question === undefined) {
-        gameContainer.classList.add("hide");
-        document.getElementById("finalScorePage").classList.remove("hide");
-    }
-}
+    
+} */
 
 // Add event listener to start button
 startBtn.addEventListener("click", runQuiz);
@@ -152,6 +160,8 @@ startBtn.addEventListener("click", runQuiz);
 // Add event listener to when a choice is clicked
 gameContainer.addEventListener("click", choiceSelected);
 
+// End quiz function call
+endQuiz();
 
 
 
