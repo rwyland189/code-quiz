@@ -38,14 +38,6 @@ var gameContainer = document.getElementById("gameContainer")
 
 var questionIndex = 0;
 
-//help
-// var choicesIndex = ;
-
-var answerIndex = 0;
-
-// Global variable delcared to simplify data
-var q = questionList[questionIndex]
-
 // Variable to track high score/how many questions the user answered correctly
 var score = 0;
 
@@ -79,59 +71,64 @@ function runQuiz() {
     // Call updateCountdownTimer every second
     setInterval(updateCountdownTimer, 1000);
 
-    // remove instructions & start button and display first question
+    // Remove instructions & start button and display first question
     document.getElementById("instructions").classList.add("hide")
     gameContainer.classList.remove("hide")
 
+    // Call function to show quiz questions
+    showQuestion();
+}
+
+// Create elements to display the question and choice options
+function showQuestion() {
     // Create h3 element to display question
     var questionEl = document.createElement("h3");
     // Give question element a class
     questionEl.className = "question";
     // Upload the questionList question content
-    questionEl.innerHTML = q.question;
+    questionEl.innerHTML = questionList[questionIndex].question;
     // Add question to the gameContainer
-    gameContainer.appendChild(questionEl)
+    gameContainer.appendChild(questionEl);
 
     // Create buttons to display answer choices
-    for (var i = 0; i < q.choices.length; i++) {
+    for (var i = 0; i < questionList[questionIndex].choices.length; i++) {
         var choicesEl = document.createElement("button");
         choicesEl.className = "choices";
-        choicesEl.innerHTML = q.choices[i];
-        gameContainer.appendChild(choicesEl)
+        choicesEl.innerHTML = questionList[questionIndex].choices[i];
+        gameContainer.appendChild(choicesEl);
     }
 }
 
+// Function that runs based off clicking one of choice options
+function choiceSelected(event) {
+    console.log(event);
+    console.log(event.target);
 
-// Iterate through questionList after click event occurs
-function loopQuiz() {
-    // check if answer is correct
-    if (questionList[answerIndex]) {
+    // If correct answer is selected alert user and award 10 points to high score
+    if (choiceSelected === questionList[questionIndex].answer) {
         alert("Correct!");
-
-        // function to add 10 points to high score
         score = score + 10;
     }
-    // check if answer is wrong
-    else if (!CHOICE/ANSWER) {
+    // If incorrect answer is selected alert user and deduct 10 seconds from countdown timer
+    else {
         alert("Wrong :(");
-
-        // function to deduct 10 seconds from the clock
         time = time - 10;
     }
 
-    // save user input with localStorage
-
-    // display next questionIndex in questionList
-    for (var i = 0; i < q.length; i++) {
-        // do we call runQuiz(); ?
-    }
+    // Display next question
+    showQuestion(questionIndex[i]);
 }
+
+// Create a function to save the data
+/*function savedResponses() {
+
+}*/
 
 // Add event listener to start button
 startBtn.addEventListener("click", runQuiz);
 
 // Add event listener to when a choice is clicked
-gameContainer.choicesEl.addEventListener("click", loopQuiz)
+gameContainer.addEventListener("click", choiceSelected);
 
 
 
@@ -145,7 +142,7 @@ gameContainer.choicesEl.addEventListener("click", loopQuiz)
 
 // when a choice is selected for the first question
 // then an alert will tell the user whether they are right or wrong
-// if they are wrong, time will be deducted from the clock
+// if they are wrong, time will be deducted from the clock - done
 // localStorage will save their answer/input
 // then the question will disappear (remove from DOM)
 // and the next question in the array of objects will appear (?)
