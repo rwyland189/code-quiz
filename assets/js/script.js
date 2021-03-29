@@ -101,11 +101,12 @@ function showQuestion() {
 
 // Function that runs based off clicking one of choice options
 function choiceSelected(event) {
+    // logging to track the target element of the click
     console.log(event);
     console.log(event.target);
 
     // If correct answer is selected alert user and award 10 points to high score
-    if (choiceSelected === questionList[questionIndex].answer) {
+    if (choiceSelected.textContent === questionList[questionIndex].answer.textContent) {
         alert("Correct!");
         score = score + 10;
     }
@@ -115,14 +116,19 @@ function choiceSelected(event) {
         time = time - 10;
     }
 
-    // Display next question
-    showQuestion(questionIndex[i]);
+    // remove previous question???
+
+    // Display next question in questionList
+    showQuestion(questionList[questionIndex++]);
 }
 
-// Create a function to save the data
-/*function savedResponses() {
+/* Create a function to save the data
+function savedResponses() {
 
 }*/
+
+/* Create high score page
+    if all questions have been answered, */
 
 // Add event listener to start button
 startBtn.addEventListener("click", runQuiz);
@@ -133,24 +139,24 @@ gameContainer.addEventListener("click", choiceSelected);
 
 
 
-//after the start button is clicked on...
-// then the first question of multiple will display on the screen (create a form/div to the DOM) - done
-// the questions are stored in an array of objects - done
-// we will need to iterate over this array of objects - NOT DONE!
-// a countdown timer will begin (add element to the DOM) - done
-// the instructions will be removed (remove from DOM) - done
+        //after the start button is clicked on...
+        // then the first question of multiple will display on the screen (create a form/div to the DOM) - done
+        // the questions are stored in an array of objects - done
+        // we will need to iterate over this array of objects - done
+        // a countdown timer will begin (add element to the DOM) - done
+        // the instructions will be removed (remove from DOM) - done
 
-// when a choice is selected for the first question
-// then an alert will tell the user whether they are right or wrong
-// if they are wrong, time will be deducted from the clock - done
-// localStorage will save their answer/input
-// then the question will disappear (remove from DOM)
-// and the next question in the array of objects will appear (?)
+// when a choice is selected for the first question...
+        // then an alert will tell the user whether they are right or wrong - done
+        // if they are wrong, time will be deducted from the clock - done
+// localStorage will save their answer/input - NOT DONE!
+// then the question will disappear (remove from DOM) - NOT DONE!
+        // and the next question in the array of objects will appear - done
 
-// when the second question displays on the DOM, then the code for the first question will be repeated, and so on with every question
+        // when the second question displays on the DOM, then the code for the first question will be repeated, and so on with every question - done
 
-// the quiz is over when either all questions have been answered or the time runs out
-// if time runs out, then an alert will say "time's up!"
+// the quiz is over when either all questions have been answered or the time runs out - NOT DONE!
+// if time runs out, then an alert will say "time's up!" - NOT DONE!
 
 // when the quiz is over...
 // create an input text area on the DOM so the user can enter their initials
