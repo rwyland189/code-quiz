@@ -101,12 +101,12 @@ function showQuestion() {
 
 // Function that runs based off clicking one of choice options
 function choiceSelected(event) {
-    // logging to track the target element of the click
+    // Log to track the target element of the click
     console.log(event);
     console.log(event.target);
 
     // If correct answer is selected alert user and award 10 points to high score
-    if (choiceSelected.textContent === questionList[questionIndex].answer.textContent) {
+    if (event.target.textContent === questionList[questionIndex].answer) {
         alert("Correct!");
         score = score + 10;
     }
@@ -122,13 +122,29 @@ function choiceSelected(event) {
     showQuestion(questionList[questionIndex++]);
 }
 
-/* Create a function to save the data
-function savedResponses() {
+// Create a function to save the data
+function saveAnswer() {
+    localStorage.setItem("key", value);
+}
 
-}*/
+// Create a function to get items from local storage and convert to high score
+function loadHighScore() {
+    // localStorage.getItem("");
 
-/* Create high score page
-    if all questions have been answered, */
+    // parseInt this value
+
+    // multiply that value by 10 to get total high score
+    score = value * 10;
+}
+
+// Display final score page
+function finalScore() {
+    // Hide gameContainer and reveal highScorePage when all questions have been run through
+    if (questionList[questionIndex].question === undefined) {
+        gameContainer.classList.add("hide");
+        document.getElementById("finalScorePage").classList.remove("hide");
+    }
+}
 
 // Add event listener to start button
 startBtn.addEventListener("click", runQuiz);
